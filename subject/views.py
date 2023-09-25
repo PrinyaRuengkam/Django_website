@@ -17,7 +17,7 @@ def about(request):
     return render(request, 'about.html')
     
 
-# def home2
+
 
 
 def general(request):
@@ -29,7 +29,7 @@ def general(request):
     return render(request, 'home2.html',context)
 
 
-# def home3
+
 
 def elective(request):
     context = {}
@@ -39,7 +39,7 @@ def elective(request):
     
     return render(request, 'home3.html',context)
 
-# def home4
+
 
 def technical(request):
     context = {}
