@@ -1,0 +1,38 @@
+{% extends "blank.html" %}
+
+{% block content %}
+
+<div class="card-body">
+    <div class="table-responsive">
+        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+            <thead>
+                <tr>
+                    <th>รหัสวิชา</th>
+                    <th>ชื่อวิชา</th>
+                    <th>หน่วยกิต</th>
+                    <th>ปีการศึกษา</th>
+                    <th>ภาคเรียน</th>
+                    <th>อาจารย์ผู้สอน</th>
+                    <th>หมวดหมู่</th>
+                </tr>
+            </thead>
+            
+            <tbody>
+                {% for sub in subjects %}
+                <tr>
+                    <td>{{ sub.class_id }}</td>
+                    <td>{{ sub.class_name }}</td>
+                    <td>{{ sub.class_credit }}</td>
+                    <td>{{ sub.class_year }}</td>
+                    <td>{{ sub.semester }}</td>
+                    <td>{{ sub.teacher }}</td>
+                    <td>{{ sub.class_category }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+    
+{% endblock content %}
+    
