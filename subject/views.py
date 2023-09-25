@@ -1,53 +1,29 @@
 from django.shortcuts import render
+from .models import subject
 
-from . import models
-# Create your views here.
+def render_subject_page(request, template_name, category):
+    context = {}
+    subjects = subject.objects.filter(class_category=category)
+    context['subjects'] = subjects
+    return render(request, template_name, context)
 
 def index(request):
-    context = {}
-    
-    subject = models.subject.objects.all()
-    context['subjects'] = subject
-    
-    
+    subjects = subject.objects.all()
+    context = {'subjects': subjects}
     return render(request, 'home.html', context)
-    
-    
+
 def about(request):
     return render(request, 'about.html')
-    
-
-
-
 
 def general(request):
-    context = {}
-    
-    subject = models.subject.objects.filter(class_category=1)
-    context['subjects'] = subject
-    
-    return render(request, 'home2.html',context)
-
-
-
+    return render_subject_page(request, 'home2.html', 1)
 
 def elective(request):
-    context = {}
-    
-    subject = models.subject.objects.filter(class_category=2)
-    context['subjects'] = subject
-    
-    return render(request, 'home3.html',context)
-
-
+    return render_subject_page(request, 'home3.html', 2)
 
 def technical(request):
-    context = {}
-    
-    subject = models.subject.objects.filter(class_category=3)
-    context['subjects'] = subject
-    
-    return render(request, 'home4.html',context)
+    return render_subject_page(request, 'home4.html', 3)
+
 
 
 
