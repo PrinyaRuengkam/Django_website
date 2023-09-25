@@ -24,6 +24,15 @@ def elective(request):
 def technical(request):
     return render_subject_page(request, 'home4.html', 3)
 
+from django.http import StreamingHttpResponse
+
+def stream_subject_page(request, template_name, category):
+    subjects = subject.objects.filter(class_category=category)
+    response = StreamingHttpResponse(
+        render(request, template_name, {'subjects': subjects})
+    )
+    return response
+
 
 
 
